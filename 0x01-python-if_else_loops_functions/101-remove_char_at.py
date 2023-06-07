@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-def remove_char_at(str, num):
-    """Create a copy of the string without the character at position num"""
-    if num < 0:
+def remove_char_at(str, n):
+    """Create a copy of the string without the character at position n"""
+    if n < 0:
         return (str)
-    return (str[:num] + str[num+1:])i
+    return (str[:n] + str[n+1:])
