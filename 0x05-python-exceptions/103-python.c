@@ -1,11 +1,11 @@
 #include <Python.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <object.h>
 #include <listobject.h>
 #include <bytesobject.h>
 #include <floatobject.h>
 #include <string.h>
-#include <stdlib.h>
 /**
  * print_python_bytes - print python things
  * @p: pointer to PyObject p
@@ -78,3 +78,4 @@ void print_python_list(PyObject *p)
 		!strcmp(t, "bytes") ? print_python_bytes(list->ob_item[i]) : (void)t;
 		!strcmp(t, "float") ? print_python_float(list->ob_item[i]) : (void)t;
 	}
+}
