@@ -1,79 +1,106 @@
 #!/usr/bin/python3
-"""Define classes for a singly-linked list."""
+"""creates class Square."""
 
 
-class Node:
-    """Represent a node in a singly-linked list."""
-
-    def __init__(self, data, next_node=None):
-        """Initialize a new Node.
-
+class Square:
+    """ Square class defined
+        Attributes:
+            size (int): Size of square
+            position (tuple): position of space and new lines
+    """
+    def __init__(self, size=0, position=(0, 0)):
+        """initializes
         Args:
-            data (int): The data of the new Node.
-            next_node (Node): The next node of the new Node.
+            size (int): size
+            postion(tuple): postion
+        Returns:
+            None
         """
-        self.data = data
-        self.next_node = next_node
+
+        self.size = size
+        self.position = position
 
     @property
-    def data(self):
-        """Get/set the data of the Node."""
-        return (self.__data)
-
-    @data.setter
-    def data(self, value):
-        if not isinstance(value, int):
-            raise TypeError("data must be an integer")
-        self.__data = value
-
-    @property
-    def next_node(self):
-        """Get/set the next_node of the Node."""
-        return (self.__next_node)
-
-    @next_node.setter
-    def next_node(self, value):
-        if not isinstance(value, Node) and value is not None:
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = value
-
-
-class SinglyLinkedList:
-    """Represent a singly-linked list."""
-
-    def __init__(self):
-        """Initalize a new SinglyLinkedList."""
-        self.__head = None
-
-    def sorted_insert(self, value):
-        """Insert a new Node to the SinglyLinkedList.
-
-        The node is inserted into the list at the correct
-        ordered numerical position.
-
-        Args:
-            value (Node): The new Node to insert.
+    def size(self):
         """
-        new = Node(value)
-        if self.__head is None:
-            new.next_node = None
-            self.__head = new
-        elif self.__head.data > value:
-            new.next_node = self.__head
-            self.__head = new
+        getter of size
+        Return:
+            Size of square
+        """
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        """
+        Setter of size
+        Args:
+            value (int): size
+        Raises
+            TypeError: if size is not int
+            ValueError: size less than 0
+        Returns:
+            None
+        """
+        if type(value) != int:
+            raise TypeError("size must be an integer")
+        elif value < 0:
+            raise ValueError("size must be >= 0")
         else:
-            tmp = self.__head
-            while (tmp.next_node is not None and
-                    tmp.next_node.data < value):
-                tmp = tmp.next_node
-            new.next_node = tmp.next_node
-            tmp.next_node = new
+            self.__size = value
+
+    @property
+    def position(self):
+        """
+        get postion attribute
+        """
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        """
+            setter of position
+        Args:
+            value (tuple): position of the square in 2D space
+        Returns:
+            None
+        """
+        if len(value) != 2 or type(value) != tuple:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(value[0]) != int or value[0] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(value[1]) != int or value[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
+
+    def area(self):
+        """
+        get area
+        Return:
+            area (int)
+        """
+        return self.__size ** 2
+
+    def my_print(self):
+        """
+        print a square
+        Returns:
+            None
+        """
+        if self.size == 0:
+            print()
+        else:
+            print('\n'*self.__position[1], end='')
+            for i in range(self.__size):
+                print(' '*self.__position[0], end='')
+                print('#'*self.__size)
 
     def __str__(self):
-        """Define the print() representation of a SinglyLinkedList."""
-        values = []
-        tmp = self.__head
-        while tmp is not None:
-            values.append(str(tmp.data))
-            tmp = tmp.next_node
-        return ('\n'.join(values))
+        """
+        defining printing behavior of the class
+        """
+        if self.__size == 0:
+            return ''
+        new_lines = '\n' * self.position[1]
+        spaces = ' ' * self.position[0]
+        hashes = '#' * self.size
+        return new_lines + '\n'.join(spaces + hashes for e in range(self.size))
