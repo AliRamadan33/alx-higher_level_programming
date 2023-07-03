@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""creates class Rectangle"""
+"""defines program to solve the N queens problem"""
+
 
 import sys
 if len(sys.args) is not 2:
