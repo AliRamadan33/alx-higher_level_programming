@@ -17,4 +17,3 @@ class LockedClass:
         """Creates new instances of Locked Class."""
 
         self.first_name = "first_name"
-
