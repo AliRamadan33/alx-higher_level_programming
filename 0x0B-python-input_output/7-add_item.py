@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module that contain a functions that returns an object by."""
+"""Add all arguments to a Python list and save them to a file."""
 import sys
 
 if __name__ == "__main__":
@@ -10,6 +10,6 @@ if __name__ == "__main__":
     try:
         items = load_from_json_file("add_item.json")
     except FileNotFoundError:
-        items = []i
+        items = []
     items.extend(sys.argv[1:])
     save_to_json_file(items, "add_item.json")
