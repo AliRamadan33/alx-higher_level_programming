@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 dules containing is_same_class methods"""
 
 
