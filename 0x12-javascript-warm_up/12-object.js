@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Prints a message depending on number of arguments passed
+// Replaces values 12 to 89
 
 const myObject = {
     type: 'object',
