@@ -1,8 +1,8 @@
 #!/usr/bin/node
 if (process.argv > 3) {
     console.log('Argument found');
-  } else if (process.argv === 3) {
+} else if (process.argv === 3) {
     console.log('Argument found');
-  } else {
+} else {
     console.log('No argument');
-  }
+}
